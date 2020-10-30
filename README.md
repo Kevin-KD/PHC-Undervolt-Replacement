@@ -1,6 +1,6 @@
 # PHC-Undervolt-Replacement
 
-Since PHC is not getting updates and requires a kernel module, I made this simple script to control voltage and frequency of the CPU.
+Since PHC is not getting updated and requires a kernel module, I made this simple script to control voltage and frequency of the CPU.
 
 The script requires msr-tools package and works on Ubuntu 20.04 with mobile Core 2 Duo Penryn. Other Intel CPUs launched before Core i series should work as well.
 
