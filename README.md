@@ -10,7 +10,7 @@ The script requires msr-tools package and works on Ubuntu 20.04 with mobile Core
 
 F: 15 multiplier
 
-1E: 0.7125 + 30*0.0125=1.0875v (on desktop it's 0.825+ VID*0.0125)
+1E: 0.7125 + 30 * 0.0125=1.0875v (on desktop it's 0.825+ VID * 0.0125)
 
 Made with help from
 
