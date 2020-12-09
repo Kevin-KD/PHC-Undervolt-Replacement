@@ -10,7 +10,7 @@ modprobe msr
 
 # Get the number of CPU threads
 _cpu_list=$(grep processor /proc/cpuinfo | awk '{print $3}')
-_num_threads=${#_cpu_list[@]}
+_num_threads=$(grep -c processor /proc/cpuinfo)
 
 # Set to userspace governor
 for i in $_cpu_list
@@ -19,11 +19,11 @@ do
 done
 
 # Calculate load threshold for frequency change
-_threshold_1=$(bc <<< 0.2 * $_num_threads)
-_threshold_2=$(bc <<< 0.4 * $_num_threads)
-_threshold_3=$(bc <<< 0.6 * $_num_threads)
-_threshold_4=$(bc <<< 0.8 * $_num_threads)
-_threshold_5=$(bc <<< 1.0 * $_num_threads)
+_threshold_1=$(bc <<< 0.2*$_num_threads)
+_threshold_2=$(bc <<< 0.4*$_num_threads)
+_threshold_3=$(bc <<< 0.6*$_num_threads)
+_threshold_4=$(bc <<< 0.8*$_num_threads)
+_threshold_5=$(bc <<< 1.0*$_num_threads)
 
 # Infinite loop to modify frequency and voltage
 while true
@@ -59,4 +59,8 @@ do
 		echo 2601000 >/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed
 		wrmsr -a 0x199 0x0e29
 	fi
+	
+	# Sleep to reduce script's cpu load
+	sleep 0.25
+	
 done
