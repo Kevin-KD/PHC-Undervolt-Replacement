@@ -2,15 +2,12 @@
 Since PHC is not getting updated and requires a kernel module to use, I wrote this simple script to control voltage and frequency of the CPU.
 
 The script requires msr-tools package and works on Ubuntu 20.04 with mobile Core 2 Duo Penryn. Other Intel CPUs launched before Core i series should work as well.
-	
 ## Setup
-
 ### Step 1: install msr-tools
 ```
 $ sudo apt-get update
 $ sudo apt-get install msr-tools
 ```
-
 ### Step 2: find available frequencies
 ```
 $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
@@ -60,7 +57,6 @@ We can then find out the register value for 0.8 GHz using the following command.
 $ sudo rdmsr -0 -a 0x198 | cut -b 13-14
 ```
 For my CPU, the register value for 0.8 GHz is 88.
-
 ### Step 3: undervolt and stress test
 
 In order to find the default voltage, use the same method as step 2 to set cpu frequency.
@@ -75,8 +71,8 @@ Suppose the value is 1e.
 e in hexadecimal is 14.
 1e in hexadecimal is 16 x 1 + 14 = 30 in decimal.
 You can find many online tools to do the conversion.
-The voltage is 0.7125 + 30 x 0.0125 = 1.0875v on mobile CPU.
-The voltage is 0.825 + 30 x 0.0125 = 1.2v on desktop CPU.
+The voltage is 0.7125 + 30 x 0.0125 = 1.0875 V on mobile CPU.
+The voltage is 0.825 + 30 x 0.0125 = 1.2 V on desktop CPU.
 ```
 For my CPU, the default voltage register values from highest to lowest are:
 ```
@@ -113,7 +109,7 @@ Press enter for the other questions.
 
 For maximum stability, you should run the stress test for hours.
 
-If you don't have time, run at least few minutes for **minimum** stability.
+If you don't have time, run at least few minutes for _**minimum**_ stability.
 
 If your computer hangs, shuts down or Prime95 finds error, increase the voltage.
 
@@ -131,6 +127,14 @@ You can check realtime CPU frequency using the following command
 ```
 $ watch -n 1 cat /proc/cpuinfo
 ```
+For my T9500, the undervolt result is this:
+
+Frequency | 0.8 GHz (88) | 1.2 GHz (06) | 1.6 GHz (08) | 2.0 GHz (0a) | 2.6 GHz (0d) | 2.8 GHz IDA (0e)
+------------ | ------------- | ------------- | ------------- | ------------- | ------------- | -------------
+Default Voltage | 0.925 V (11) | 1 V (17) | 1.05 V (1b) | 1.0875 V (1e) | 1.1375 V (22) | 1.225 V (29)
+Undervault | 0.925 V (11) | 0.925 V (11) | 0.925 V (11) | 0.925 V (11) | 1.1125 V (20) | 1.125 V (21)
+
+VOLTAGE FLOOR
 
 ### Step 4: modify the script
 
@@ -143,7 +147,11 @@ Implement overclock.
 
 Implement dual IDA.
 
+Implement SLFM6.
+
 Improve load tracking algorithm.
+
+Override voltage floor.
 
 ## Credits
 Made with help from
