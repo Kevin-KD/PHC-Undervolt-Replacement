@@ -64,6 +64,12 @@ For my CPU, the register value for 0.8 GHz is 88.
 
 Step 3: undervolt and stress test
 
+4F1E in the example script means
+
+
+
+1E: 0.7125 + 30 * 0.0125=1.0875v (on desktop it's 0.825+ VID * 0.0125)
+
 Step 4: modify the script
 
 Step 5: add script to root crontab with nice
@@ -81,17 +87,3 @@ unclewebb and golovkin from http://forum.notebookreview.com/threads/the-throttle
 and haarp from https://forums.gentoo.org/viewtopic-t-914154-start-25.html
 
 and Doug Smythies from https://askubuntu.com/questions/587978/can-i-upper-limit-the-cpu-frequency
-
-
-
-
-
-
-#https://askubuntu.com/questions/587978/can-i-upper-limit-the-cpu-frequency
-#https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project
-
-4F1E in the example script means
-
-
-
-1E: 0.7125 + 30 * 0.0125=1.0875v (on desktop it's 0.825+ VID * 0.0125)
