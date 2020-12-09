@@ -41,7 +41,7 @@ a: 10 multiplier
 ...
 f: 15 multiplier
 ```
-For my CPU, the register values from highest to lowest are:
+For my CPU, the frequency register values from highest to lowest are:
 ```
 0e 0d 0a 08 06
 ```
@@ -49,12 +49,11 @@ The lowest multiplier may not follow the formula.
 
 We can set the frequency to a static value and find out the register value.
 
-For example, the following commands set frequency scaling governor to performance and set maximum frequency to 0.8 GHz for a dual core CPU with two threads. 
+For example, the following commands set frequency scaling governor to userspace and set frequency to 0.8 GHz for a dual core CPU with two threads. 
 ```
-$ sudo sh -c "echo performance >/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
-$ sudo sh -c "echo performance >/sys/devices/system/cpu/cpu1/cpufreq/scaling_governor"
-$ echo 800000 | sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-$ echo 800000 | sudo tee /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
+$ sudo sh -c "echo userspace >/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
+$ sudo sh -c "echo userspace >/sys/devices/system/cpu/cpu1/cpufreq/scaling_governor"
+$ sudo sh -c "echo 800000 >/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed"
 ```
 We can then find out the register value for 0.8 GHz using the following command.
 ```
@@ -64,11 +63,23 @@ For my CPU, the register value for 0.8 GHz is 88.
 
 Step 3: undervolt and stress test
 
-4F1E in the example script means
-
-
-
-1E: 0.7125 + 30 * 0.0125=1.0875v (on desktop it's 0.825+ VID * 0.0125)
+In order to find the default voltage, use the same method as step 2 to set cpu frequency.
+Use the following command to find out the register value for the voltage.
+```
+$ sudo rdmsr -0 -a 0x198 | cut -b 15-16
+```
+You can convert these hexadecimal register value into voltage using this formula: 
+```
+Suppose the value is 1e.
+1e in hexadecimal is 16 x 1 + 14 = 30 in decimal.
+You can find many online tools to do the conversion.
+The voltage is 0.7125 + 30 x 0.0125 = 1.0875v on mobile CPU.
+The voltage is 0.825 + 30 x 0.0125 = 1.2v on desktop CPU.
+```
+For my CPU, the voltage register values from highest to lowest are:
+```
+29 22 1e 1b 17 11
+```
 
 Step 4: modify the script
 
