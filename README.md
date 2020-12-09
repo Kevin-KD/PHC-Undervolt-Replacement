@@ -1,17 +1,17 @@
-## PHC-Undervolt-Replacement
+# PHC-Undervolt-Replacement
 Since PHC is not getting updated and requires a kernel module to use, I wrote this simple script to control voltage and frequency of the CPU.
 
 The script requires msr-tools package and works on Ubuntu 20.04 with mobile Core 2 Duo Penryn. Other Intel CPUs launched before Core i series should work as well.
 	
 ## Setup
 
-Step 1: install msr-tools
+### Step 1: install msr-tools
 ```
 $ sudo apt-get update
 $ sudo apt-get install msr-tools
 ```
 
-Step 2: find available frequencies
+### Step 2: find available frequencies
 ```
 $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
 ```
@@ -61,7 +61,7 @@ $ sudo rdmsr -0 -a 0x198 | cut -b 13-14
 ```
 For my CPU, the register value for 0.8 GHz is 88.
 
-Step 3: undervolt and stress test
+### Step 3: undervolt and stress test
 
 In order to find the default voltage, use the same method as step 2 to set cpu frequency.
 Use the following command to find out the register value for the voltage.
@@ -81,9 +81,9 @@ For my CPU, the voltage register values from highest to lowest are:
 29 22 1e 1b 17 11
 ```
 
-Step 4: modify the script
+### Step 4: modify the script
 
-Step 5: add script to root crontab
+### Step 5: add script to root crontab
 
 ## TODO
 Automate everything to make it easier to undervolt using script like this https://bbs.archlinux.org/viewtopic.php?pid=1141702#p1141702.
