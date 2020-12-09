@@ -72,7 +72,7 @@ Step 3: undervolt and stress test
 
 Step 4: modify the script
 
-Step 5: add script to root crontab with nice
+Step 5: add script to root crontab
 
 ## TODO
 Automate everything to make it easier to undervolt using script like this https://bbs.archlinux.org/viewtopic.php?pid=1141702#p1141702.
@@ -81,7 +81,7 @@ Implement overclock.
 
 Implement dual IDA.
 
-Use userspace governor.
+Improve load tracking algorithm.
 
 ## Credits
 Made with help from
