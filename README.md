@@ -5,12 +5,17 @@ Since PHC is not getting updated and requires a kernel module to use, I wrote th
 The script requires msr-tools package and works on Ubuntu 20.04 with mobile Core 2 Duo Penryn. Other Intel CPUs launched before Core i series should work as well.
 
 Step 1: install msr-tools
+
 sudo apt-get update
+
 sudo apt-get install msr-tools
 
 find available frequency
+
 undervolt and stress test
+
 write fid and vid into script
+
 add script to cron with nice
 
 
