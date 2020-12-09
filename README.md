@@ -79,6 +79,10 @@ Automate everything to make it easier to use.
 
 Implement overclock.
 
+Use userspace governor.
+
+Implement per core control.
+
 ## Credits
 Made with help from
 
