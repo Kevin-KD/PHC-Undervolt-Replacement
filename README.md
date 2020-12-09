@@ -62,6 +62,12 @@ sudo rdmsr -0 0x198 | cut -b 13-14
 ```
 For my CPU, the register value for 0.8 GHz is 88.
 
+Step 3: undervolt and stress test
+
+Step 4: modify the script
+
+Step 5: add script to root crontab with nice
+
 ## TODO
 Automate everything to make it easier to use.
 
@@ -78,11 +84,8 @@ and Doug Smythies from https://askubuntu.com/questions/587978/can-i-upper-limit-
 
 
 
-undervolt and stress test
 
-write fid and vid into script
 
-add script to cron with nice
 
 #https://askubuntu.com/questions/587978/can-i-upper-limit-the-cpu-frequency
 #https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project
