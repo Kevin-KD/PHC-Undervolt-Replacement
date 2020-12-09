@@ -19,11 +19,11 @@ do
 done
 
 # Calculate load threshold for frequency change
-_threshold_1=$(bc <<< 'scale=2; 0.2/$_num_threads')
-_threshold_2=$(bc <<< 'scale=2; 0.4/$_num_threads')
-_threshold_3=$(bc <<< 'scale=2; 0.6/$_num_threads')
-_threshold_4=$(bc <<< 'scale=2; 0.8/$_num_threads')
-_threshold_5=$(bc <<< 'scale=2; 1.0/$_num_threads')
+_threshold_1=$(bc <<< 0.2 * $_num_threads)
+_threshold_2=$(bc <<< 0.4 * $_num_threads)
+_threshold_3=$(bc <<< 0.6 * $_num_threads)
+_threshold_4=$(bc <<< 0.8 * $_num_threads)
+_threshold_5=$(bc <<< 1.0 * $_num_threads)
 
 # Infinite loop to modify frequency and voltage
 while true
