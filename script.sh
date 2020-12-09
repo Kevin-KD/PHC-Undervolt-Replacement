@@ -12,7 +12,7 @@ modprobe msr
 echo -n 1 > /sys/devices/system/cpu/cpufreq/ondemand/ignore_nice_load
 
 # Get the number of CPU threads
-cpulist = $(grep processor /proc/cpuinfo | awk '{print $3}')
+cpulist=$(grep processor /proc/cpuinfo | awk '{print $3}')
 
 # Infinite loop to modify voltage on the fly
 while true
@@ -21,7 +21,7 @@ do
 	for i in $cpulist
 	do
 		# Find current frequency set by ondeamnd governor
-		currentFID = $(rdmsr -0 0x198 | cut -b 13-14)
+		currentFID=$(rdmsr -0 0x198 | cut -b 13-14)
 		case $currentFID in
 			# If FID is 0e then set VID to 29
 			0e)
