@@ -75,13 +75,11 @@ Step 4: modify the script
 Step 5: add script to root crontab with nice
 
 ## TODO
-Automate everything to make it easier to use.
+Automate everything to make it easier to use using script like this https://bbs.archlinux.org/viewtopic.php?pid=1141702#p1141702.
 
 Implement overclock.
 
 Use userspace governor.
-
-Implement per core control.
 
 ## Credits
 Made with help from
