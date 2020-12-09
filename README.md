@@ -51,8 +51,8 @@ We can set the frequency to a static value and find out the register value.
 
 For example, the following commands set frequency scaling governor to performance and set maximum frequency to 0.8 GHz for a dual core CPU with two threads. 
 ```
-sudo echo performance >/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-sudo echo performance >/sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
+sudo sh -c "echo performance >/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
+sudo sh -c "echo performance >/sys/devices/system/cpu/cpu1/cpufreq/scaling_governor"
 echo 800000 | sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 echo 800000 | sudo tee /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
 ```
