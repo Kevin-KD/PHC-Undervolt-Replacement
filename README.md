@@ -79,6 +79,8 @@ Automate everything to make it easier to undervolt using script like this https:
 
 Implement overclock.
 
+Implement dual IDA.
+
 Use userspace governor.
 
 ## Credits
