@@ -71,7 +71,8 @@ $ sudo rdmsr -0 -a 0x198 | cut -b 15-16
 You can convert these hexadecimal register value into voltage using this formula: 
 ```
 Suppose the value is 1e.
-1e in hexadecimal is 16 x 1 + 14 = 30 in decimal.
+e in hexadecimal is 14.
+1e in hexadecimal is 16 x **1** + **14** = 30 in decimal.
 You can find many online tools to do the conversion.
 The voltage is 0.7125 + 30 x 0.0125 = 1.0875v on mobile CPU.
 The voltage is 0.825 + 30 x 0.0125 = 1.2v on desktop CPU.
