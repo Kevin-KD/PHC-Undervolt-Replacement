@@ -1,5 +1,6 @@
 #!/bin/bash
 # PHC-Undervolt-Replacement by Kevin-KD
+# v1.0.0
 # Simple script to undervolt CPU
 # Run with root privilege
 # Check Github page for more details
