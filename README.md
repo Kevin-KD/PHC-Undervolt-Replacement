@@ -177,5 +177,3 @@ Made with help from
 unclewebb and golovkin from http://forum.notebookreview.com/threads/the-throttlestop-guide.531329/
 
 and haarp from https://forums.gentoo.org/viewtopic-t-914154-start-25.html
-
-and Doug Smythies from https://askubuntu.com/questions/587978/can-i-upper-limit-the-cpu-frequency
