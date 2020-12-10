@@ -128,15 +128,17 @@ You can check realtime CPU frequency using the following command
 $ watch -n 1 cat /proc/cpuinfo
 ```
 For my T9500, the undervolt result is this:
-
 Frequency | 0.8 GHz (88) | 1.2 GHz (06) | 1.6 GHz (08) | 2.0 GHz (0a) | 2.6 GHz (0d) | 2.8 GHz IDA (0e)
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | -------------
 Default Voltage | 0.925 V (11) | 1 V (17) | 1.05 V (1b) | 1.0875 V (1e) | 1.1375 V (22) | 1.225 V (29)
 Undervault | 0.925 V (11) | 0.925 V (11) | 0.925 V (11) | 0.925 V (11) | 1.1125 V (20) | 1.125 V (21)
+I haven't found a way to set voltage lower than 0.925 V (11).
 
-VOLTAGE FLOOR
+According to https://www.cpu-world.com/CPUs/Core_2/Intel-Core%202%20Duo%20Mobile%20T9500%20FF80576GG0646M.html, the lowest voltage from factory is 0.75 V.
 
+CPU doesn't respond to any voltage register lower than 11.
 ### Step 4: modify the script
+
 
 ### Step 5: add script to root crontab
 
