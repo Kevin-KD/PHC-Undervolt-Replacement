@@ -61,7 +61,7 @@ do
 		wrmsr -a 0x199 0x0e29
 	fi
 	
-	# Sleep to reduce script's cpu load
+	# Sleep to reduce script's overhead
 	sleep 0.25
 	
 done
