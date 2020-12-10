@@ -167,7 +167,7 @@ Implement dual IDA.
 
 Implement SLFM6.
 
-Improve load tracking algorithm.
+Improve load tracking algorithm using instantaneous load.
 
 Override voltage floor.
 
