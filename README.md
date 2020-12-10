@@ -127,6 +127,10 @@ You can check realtime CPU frequency using the following command
 ```
 $ watch -n 1 cat /proc/cpuinfo
 ```
+The minimum stable voltage is also related to CPU temperature.
+
+Stable at a certain voltage with external cooler or low ambient temperature in winter can be unstable without external cooler or high ambient temperature in summer. 
+
 For my T9500, the undervolt result is this:
 Frequency | 0.8 GHz (88) | 1.2 GHz (06) | 1.6 GHz (08) | 2.0 GHz (0a) | 2.6 GHz (0d) | 2.8 GHz IDA (0e)
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | -------------
@@ -138,8 +142,19 @@ According to https://www.cpu-world.com/CPUs/Core_2/Intel-Core%202%20Duo%20Mobile
 
 CPU doesn't respond to any voltage register lower than 11.
 ### Step 4: modify the script
+The example in script.sh has 5 thresholds and 6 frequency+voltage combinations.
 
+If your CPU has more combinations, modify the script accordingly.
 
+Modify the frequency and voltage in the if statements to your own value.
+
+If your CPU has multiple frequencies that are stable at the same voltage like mine, you can simplify the if statement to use only the highest frequency at that voltage.
+
+The power and heat is mostly related to voltage, not frequency.
+
+The default sleep time of 0.25 second results in 1% CPU utilization on 0.8 GHz T9500.
+
+Decrease that value can reduce transition time between frequencies but at the cost of higher overhead.
 ### Step 5: add script to root crontab
 
 ## TODO
