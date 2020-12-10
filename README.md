@@ -171,6 +171,7 @@ Improve load tracking algorithm using instantaneous load.
 
 Override voltage floor.
 
+Load modified DSDT at boot time instead of using this script hack.
 ## Credits
 Made with help from
 
