@@ -38,26 +38,20 @@ do
 	if [ "`echo "${_load_avg_1} < $_threshold_1" | bc`" -eq 1 ]
 	then
 		# Set frequency to 0.8 GHz on all cores
-		echo 800000 >/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed
 		wrmsr -a 0x199 0x8811
 	elif [ "`echo "${_load_avg_1} < $_threshold_2" | bc`" -eq 1 ]
 	then
-		echo 1200000 >/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed
 		wrmsr -a 0x199 0x0617
 	elif [ "`echo "${_load_avg_1} < $_threshold_3" | bc`" -eq 1 ]
 	then
-		echo 1600000 >/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed
 		wrmsr -a 0x199 0x081b
 	elif [ "`echo "${_load_avg_1} < $_threshold_4" | bc`" -eq 1 ]
 	then
-		echo 2000000 >/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed
 		wrmsr -a 0x199 0x0a1e
 	elif [ "`echo "${_load_avg_1} < $_threshold_5" | bc`" -eq 1 ]
 	then
-		echo 2600000 >/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed
 		wrmsr -a 0x199 0x0d22
 	else
-		echo 2601000 >/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed
 		wrmsr -a 0x199 0x0e29
 	fi
 	
