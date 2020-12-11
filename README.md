@@ -150,7 +150,7 @@ Modify the frequency and voltage in the if statements to your own value.
 
 If your CPU has multiple frequencies that are stable at the same voltage like mine, you can simplify the if statement to use only the highest frequency at that voltage.
 
-The power and heat is mostly related to voltage, not frequency.
+Power and heat is mostly related to voltage, not frequency.
 
 The default sleep time of 0.25 second results in 1% CPU utilization on 0.8 GHz T9500.
 
