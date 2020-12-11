@@ -78,9 +78,8 @@ For my CPU, the default voltage register values from highest to lowest are:
 ```
 29 22 1e 1b 17 11
 ```
-Set a static frequency and desired voltage using the following commands:
+Set a static frequency and desired voltage using the following command:
 ```
-$ sudo sh -c "echo 2601000 >/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed"
 $ sudo wrmsr -a 0x199 0x0e28
 ```
 **STOP!**
