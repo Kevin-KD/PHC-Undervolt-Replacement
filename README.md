@@ -155,8 +155,9 @@ Power and heat is mostly related to voltage, not frequency.
 The default sleep time of 0.25 second results in 1% CPU utilization on 0.8 GHz T9500.
 
 Decrease that value can reduce transition time between frequencies but at the cost of higher overhead.
-### Step 5: add script to root crontab
-
+### Step 5: run script after boot
+### Result
+My T9500 at 2.0 GHz with external cooler pulling air from the exhaust reaches 84 °C after 5 minutes Prime95 smallest FFTs stress test under default voltage while it only reaches 67 °C with -0.1625 V.
 ## TODO
 Automate everything to make it easier to undervolt using script like this https://bbs.archlinux.org/viewtopic.php?pid=1141702#p1141702.
 
@@ -173,8 +174,6 @@ Override voltage floor.
 Load modified DSDT at boot time instead of using this script hack.
 
 Read PHC source code.
-
-Test temperature difference.
 
 Set static frequency.
 
