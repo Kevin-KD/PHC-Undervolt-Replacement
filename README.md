@@ -171,6 +171,14 @@ Improve load tracking algorithm using instantaneous load.
 Override voltage floor.
 
 Load modified DSDT at boot time instead of using this script hack.
+
+Read PHC source code.
+
+Test temperature difference.
+
+Set static frequency.
+
+Read from 0x199.
 ## Credits
 Made with help from
 
