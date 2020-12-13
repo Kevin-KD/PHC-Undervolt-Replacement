@@ -8,6 +8,9 @@
 # Load msr driver into kernel
 modprobe msr
 
+# Ignore nice load
+echo -n 1 > /sys/devices/system/cpu/cpufreq/ondemand/ignore_nice_load
+
 # Get the number of CPU threads
 _cpu_list=$(grep processor /proc/cpuinfo | awk '{print $3}')
 
