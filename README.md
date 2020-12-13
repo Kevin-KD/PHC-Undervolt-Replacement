@@ -165,7 +165,7 @@ Implement overclock.
 
 Implement dual IDA.
 
-Implement SLFM6.
+Implement SLFM and SLFM6.
 
 Improve load tracking algorithm using instantaneous load.
 
@@ -174,8 +174,6 @@ Override voltage floor.
 Load modified DSDT at boot time instead of using this script hack.
 
 Read PHC source code.
-
-Set static frequency.
 
 Read from 0x199.
 ## Credits
