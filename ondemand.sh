@@ -19,7 +19,7 @@ do
 	for i in $_cpu_list
 	do
 		# Find current frequency set by ondeamnd governor
-		_current_FID=$(rdmsr -0 0x198 | cut -b 13-14)
+		_current_FID=$(rdmsr -0 0x199 | cut -b 13-14)
 		case $_current_FID in
 			# If FID is 0e then set VID to 29
 			0e)
