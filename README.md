@@ -163,11 +163,9 @@ Implement overclock.
 
 Implement dual IDA.
 
-Implement SLFM and SLFM6.
+Implement SLFM.
 
 Improve load tracking algorithm using instantaneous load.
-
-Override voltage floor.
 
 Load modified DSDT at boot time.
 
