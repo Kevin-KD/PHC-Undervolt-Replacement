@@ -165,7 +165,7 @@ Implement dual IDA.
 
 Implement SLFM.
 
-Implement C1E.
+Implement CxE and C4 C6.
 
 Improve load tracking algorithm using instantaneous load.
 
