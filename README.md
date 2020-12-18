@@ -165,6 +165,8 @@ Implement dual IDA.
 
 Implement SLFM.
 
+Implement C1E.
+
 Improve load tracking algorithm using instantaneous load.
 
 Load modified DSDT at boot time.
