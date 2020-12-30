@@ -57,6 +57,10 @@ We can then find out the register value for 0.8 GHz using the following command.
 $ sudo rdmsr -0 -a 0x198 | cut -b 13-14
 ```
 For my CPU, the register value for 0.8 GHz is 88.
+
+The register value for 0.6 GHz is 86.
+
+It is an undocumented feature called SLFM6 found by unclewebb.
 ### Step 3: undervolt and stress test
 
 In order to find the default voltage, use the same method as step 2 to set cpu frequency.
@@ -76,7 +80,7 @@ The voltage is 0.825 + 30 x 0.0125 = 1.2 V on desktop CPU.
 ```
 For my CPU, the default voltage register values from highest to lowest are:
 ```
-29 22 1e 1b 17 11
+29 22 1e 1b 17 11 11
 ```
 Set a static frequency and desired voltage using the following command:
 ```
@@ -131,10 +135,10 @@ The minimum stable voltage is also related to CPU temperature.
 Stable at a certain voltage with external cooler or low ambient temperature in winter can be unstable without external cooler or high ambient temperature in summer. 
 
 For my T9500, the undervolt result is this:
-Frequency | 0.8 GHz (88) | 1.2 GHz (06) | 1.6 GHz (08) | 2.0 GHz (0a) | 2.6 GHz (0d) | 2.8 GHz IDA (0e)
+Frequency | 0.6 GHz (86) | 0.8 GHz (88) | 1.2 GHz (06) | 1.6 GHz (08) | 2.0 GHz (0a) | 2.6 GHz (0d) | 2.8 GHz IDA (0e)
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | -------------
-Default Voltage | 0.925 V (11) | 1 V (17) | 1.05 V (1b) | 1.0875 V (1e) | 1.1375 V (22) | 1.225 V (29)
-Undervault | 0.925 V (11) | 0.925 V (11) | 0.925 V (11) | 0.925 V (11) | 1.1125 V (20) | 1.125 V (21)
+Default Voltage | 0.925 V (11) | 0.925 V (11) | 1 V (17) | 1.05 V (1b) | 1.0875 V (1e) | 1.1375 V (22) | 1.225 V (29)
+Undervault | 0.925 V (11) | 0.925 V (11) | 0.925 V (11) | 0.925 V (11) | 0.925 V (11) | 1.1125 V (20) | 1.125 V (21)
 
 0.925 V is the lowest limit allowed on my T9500.
 
@@ -162,8 +166,6 @@ Automate everything to make it easier to undervolt using script like this https:
 Implement overclock.
 
 Implement dual IDA.
-
-Implement SLFM.
 
 Implement CxE and C4 C6.
 
