@@ -1,4 +1,5 @@
 #!/bin/bash
+#
 # PHC-Undervolt-Replacement by Kevin-KD
 # v1.0.0
 # Simple script to undervolt CPU
@@ -10,52 +11,53 @@
 modprobe msr
 
 # Get the number of CPU threads
-_cpu_list=$(grep processor /proc/cpuinfo | awk '{print $3}')
-_num_threads=$(grep -c processor /proc/cpuinfo)
+num_threads=$(grep -c processor /proc/cpuinfo)
 
 # Set to userspace governor
-for i in $_cpu_list
-do
-	echo userspace >/sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
+for ((i = 0; i < num_threads ;i++)); do
+  echo userspace >/sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
 done
 
-# Calculate load threshold for frequency change
-_threshold_1=$(bc <<< 0.2*$_num_threads)
-_threshold_2=$(bc <<< 0.4*$_num_threads)
-_threshold_3=$(bc <<< 0.6*$_num_threads)
-_threshold_4=$(bc <<< 0.8*$_num_threads)
-_threshold_5=$(bc <<< 1.0*$_num_threads)
+PREV_TOTAL=0
+PREV_IDLE=0
 
 # Infinite loop to modify frequency and voltage
-while true
-do
-	# Find CPU load average
-	_load_avg=$(cat /proc/loadavg)
-	_load_avg_array=($_load_avg)
-	_load_avg_1=${_load_avg_array[0]}
-	
-	# Modify frequency and voltage based on CPU load
-	if [ "`echo "${_load_avg_1} < $_threshold_1" | bc`" -eq 1 ]
-	then
-		# Set frequency to 0.8 GHz on all cores
-		wrmsr -a 0x199 0x8811
-	elif [ "`echo "${_load_avg_1} < $_threshold_2" | bc`" -eq 1 ]
-	then
-		wrmsr -a 0x199 0x0617
-	elif [ "`echo "${_load_avg_1} < $_threshold_3" | bc`" -eq 1 ]
-	then
-		wrmsr -a 0x199 0x081b
-	elif [ "`echo "${_load_avg_1} < $_threshold_4" | bc`" -eq 1 ]
-	then
-		wrmsr -a 0x199 0x0a1e
-	elif [ "`echo "${_load_avg_1} < $_threshold_5" | bc`" -eq 1 ]
-	then
-		wrmsr -a 0x199 0x0d22
-	else
-		wrmsr -a 0x199 0x0e29
-	fi
-	
-	# Sleep to reduce script's overhead
-	sleep 0.25
-	
+while true; do
+  # Get the total CPU statistics, discarding the 'cpu ' prefix.
+  CPU=($(sed -n 's/^cpu\s//p' /proc/stat))
+  IDLE=${CPU[3]} # Just the idle CPU time.
+ 
+  # Calculate the total CPU time.
+  TOTAL=0
+  for VALUE in "${CPU[@]:0:8}"; do
+    TOTAL=$((TOTAL+VALUE))
+  done
+ 
+  # Calculate the CPU usage since we last checked.
+  DIFF_IDLE=$((IDLE-PREV_IDLE))
+  DIFF_TOTAL=$((TOTAL-PREV_TOTAL))
+  DIFF_USAGE=$(((1000*(DIFF_TOTAL-DIFF_IDLE)/DIFF_TOTAL+5)/10))
+ 
+  # Remember the total and idle CPU times for the next check.
+  PREV_TOTAL="$TOTAL"
+  PREV_IDLE="$IDLE"
+  
+  # Modify frequency and voltage based on CPU load
+  if [ "`echo "${DIFF_USAGE} < 16" | bc`" -eq 1 ]; then
+    # Set frequency to 0.8 GHz on all cores
+    wrmsr -a 0x199 0x8811
+  elif [ "`echo "${DIFF_USAGE} < 32" | bc`" -eq 1 ]; then
+    wrmsr -a 0x199 0x0617
+  elif [ "`echo "${DIFF_USAGE} < 48" | bc`" -eq 1 ]; then
+    wrmsr -a 0x199 0x081b
+  elif [ "`echo "${DIFF_USAGE} < 64" | bc`" -eq 1 ]; then
+    wrmsr -a 0x199 0x0a1e
+  elif [ "`echo "${DIFF_USAGE} < 80" | bc`" -eq 1 ]; then
+    wrmsr -a 0x199 0x0d22
+  else
+    wrmsr -a 0x199 0x0e29
+  fi
+
+# Sleep to reduce script's overhead
+sleep 1
 done
