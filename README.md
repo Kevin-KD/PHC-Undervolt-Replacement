@@ -144,7 +144,7 @@ Undervault | 0.925 V (11) | 0.925 V (11) | 0.925 V (11) | 0.925 V (11) | 0.925 V
 
 Any lower voltage request will not be accepted by the CPU.
 ### Step 4: modify the script
-The example in script.sh has 5 thresholds and 6 frequency+voltage combinations.
+The example in undervolt.sh has 5 thresholds and 6 frequency+voltage combinations.
 
 If your CPU has more combinations, modify the script accordingly.
 
