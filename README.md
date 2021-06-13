@@ -154,7 +154,7 @@ If your CPU has multiple frequencies that are stable at the same voltage like mi
 
 Power and heat is mostly related to voltage, not frequency.
 
-The default sleep time of 0.25 second results in 1% CPU utilization on 0.8 GHz T9500.
+The default sleep time of 1 second results in less than 1% CPU utilization on 0.8 GHz T9500.
 
 Decrease that value can reduce transition time between frequencies but at the cost of higher overhead.
 ### Step 5: run script after boot
