@@ -160,23 +160,11 @@ Decrease that value can reduce transition time between frequencies but at the co
 ### Step 5: run script after boot
 ### Result
 My T9500 at 2.0 GHz with external cooler pulling air from the exhaust reaches 84 °C after 5 minutes Prime95 smallest FFTs stress test under default voltage while it only reaches 67 °C with -0.1625 V.
-## TODO
-Automate everything to make it easier to undervolt using script like this https://bbs.archlinux.org/viewtopic.php?pid=1141702#p1141702.
-
-Implement overclock.
-
-Implement dual IDA.
-
-Implement CxE and C4 C6.
-
-Improve load tracking algorithm using instantaneous load.
-
-Load modified DSDT at boot time.
-
-Read PHC source code.
 ## Credits
 Made with help from
 
 unclewebb and golovkin from http://forum.notebookreview.com/threads/the-throttlestop-guide.531329/
 
-and haarp from https://forums.gentoo.org/viewtopic-t-914154-start-25.html
+haarp from https://forums.gentoo.org/viewtopic-t-914154-start-25.html
+
+Mike Mol from https://rosettacode.org/wiki/Linux_CPU_utilization
