@@ -144,9 +144,9 @@ Undervault | 0.925 V (11) | 0.925 V (11) | 0.925 V (11) | 0.925 V (11) | 0.925 V
 
 Any lower voltage request will not be accepted by the CPU.
 ### Step 4: modify the script
-The example in undervolt.sh has 5 thresholds and 6 frequency+voltage combinations.
+The example in undervolt.sh has 6 thresholds and 7 frequency+voltage combinations.
 
-If your CPU has more combinations, modify the script accordingly.
+If your CPU has more or less combinations, modify the script accordingly.
 
 Modify the frequency and voltage in the if statements to your own value.
 
@@ -158,6 +158,14 @@ The default sleep time of 1 second results in less than 1% CPU utilization on 0.
 
 Decrease that value can reduce transition time between frequencies but at the cost of higher overhead.
 ### Step 5: run script after boot
+```
+$ sudo crontab -e
+```
+Add
+```
+@reboot bash ./[PATH TO FILE]/undervolt.sh
+```
+at the end of file.
 ### Result
 My T9500 at 2.0 GHz with external cooler pulling air from the exhaust reaches 84 °C after 5 minutes Prime95 smallest FFTs stress test under default voltage while it only reaches 67 °C with -0.1625 V.
 ## Credits
