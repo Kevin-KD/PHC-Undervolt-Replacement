@@ -23,7 +23,7 @@ prev_idle=0
 
 while true; do
   # Get the total CPU statistics, discarding the 'cpu ' prefix.
-  cpu="$(sed -n 's/^cpu\s//p' /proc/stat)"
+  cpu=($(sed -n 's/^cpu\s//p' /proc/stat))
   # Just the idle CPU time.
   idle=${cpu[3]}
  
@@ -47,7 +47,7 @@ while true; do
     # Set frequency to 0.6 GHz and voltage to 0.925V on all cores.
     wrmsr -a 0x199 0x8611
   elif (( $diff_usage < 28 )); then
-	wrmsr -a 0x199 0x8811
+    wrmsr -a 0x199 0x8811
   elif (( $diff_usage < 42 )); then
     wrmsr -a 0x199 0x0617
   elif (( $diff_usage < 56 )); then
